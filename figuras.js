@@ -1,41 +1,29 @@
 //------  CODIGO DEL CUADRADO --------------
-console.group("Cuadrados");
-
 function perimetroCuadrado(lado)
     { return lado * 4; } 
 
 function areaCuadrado(lado)
     { return lado * lado; } 
 
-console.groupEnd();
-
 //---------- CÓDIGO DEN TRIANGULO -----------
-console.group("Triangulo");
-
 function perimetroTriangulo(lado1, lado2, base)
     { return lado1 + lado2 + base; }        
 
 function areatriangulo(base, altura)
     { return (base * altura) / 2; } 
 
-    console.groupEnd();
-
 //-------------CODIGO DEL CIRCULO -------------
-console.group("Circulo");
-//Diámetro
+//-------------Diámetro
 function diametroCirculo(radio)
     {  return radio * 2; }
-
 const PI = Math.PI;
-console.log("PI es: " + PI + "cm");
 
-//Circunferencia
+//------------Circunferencia
 function perimetroCirculo(radio){
      const diametro = diametroCirculo(radio);
     return diametro * PI;
  }
-
-//Area
+//-------------Area
 function areaCirculo(radio)
     { return (radio * radio) * PI; }
 
@@ -46,65 +34,106 @@ console.groupEnd();
 //*************************************************//
 
 /*------------------- CUADRADO --------------------*/
-
 function calcularPerimetroCuadrado(){
     const input = document.getElementById("inputCuadrado");
     const value = input.value;
     const perimetro = perimetroCuadrado(value);
-    alert(perimetro); 
+    const pc = document.querySelector('#perimetro_cuadrado');
+    pc.innerHTML = "Perímetro: " + perimetro + " cm";
 }
-
 
 function calcularAreaCuadrado(){
     const input = document.getElementById("inputCuadrado");
     const value = input.value;
     const area = areaCuadrado(value);
-    alert(area); 
+    const ac = document.querySelector('#area_cuadrado');
+    ac.innerHTML = "Área: " + area + " cm<sup>2</sup>";
 }
-
 /*-------------------- TRIÁNGULO ------------------------*/
 function calcularPerimetroTriangulo(){
-    const input2= document.getElementById("lado1Triangulo");
+    const input2= document.getElementById("ladosTriangulo");
     const ladoT1 = parseInt(input2.value);
-    const input3 = document.getElementById("lado2Triangulo");
-    const ladoT2 = parseInt(input3.value);
-    const input4  = document.getElementById("baseTriangulo");
-    const baseT = parseInt(input4.value);
-    // const value = input.value;
-    const perimetroT = perimetroTriangulo(ladoT1, ladoT2, baseT);
-    alert(perimetroT); 
+    const perimetroT = perimetroTriangulo(ladoT1, ladoT1,ladoT1);
+    const pt = document.querySelector('#perimetro_triangulo');
+    pt.innerHTML = "Perímetro: " + perimetroT + " cm";
 }
 
 function calcularAreaTriangulo(){
-    const input4  = document.getElementById("baseTriangulo");
-    const baseT = parseInt(input4.value);
-    const input5 = document.getElementById("alturaTriangulo");
-    const alturaT = parseInt(input5.value);
-    const areaT = areatriangulo(baseT, alturaT);
-    alert(areaT); 
-}
+    const input2= document.getElementById("ladosTriangulo");
+    const ladoT1 = parseInt(input2.value);
 
+//-------------teorema de pitagoras
+    const h = ladoT1 * ladoT1;
+    const c_a = (ladoT1 / 2) * (ladoT1 / 2);
+    const c_o = Math.sqrt(h - c_a);   
+
+//-------------área del triangulo
+    const alturaT = (ladoT1 * c_o) / 2;
+    const areaT = areatriangulo(ladoT1, alturaT);
+    const at = document.querySelector('#area_triangulo');
+    at.innerHTML = "Área: " + areaT.toFixed(2) + " cm<sup>2</sup>";
+}
 /*------------------ CIRCULO -------------------*/
 function calcularDiametroCirculo(){
-    const input6 = document.getElementById("radio");
-    const radio = parseInt(input6.value);
+    const input3 = document.getElementById("radio");
+    const radio = parseInt(input3.value);
     const dc = diametroCirculo(radio);
-    alert(dc);
-    alert("HolaDiametro");
+    const diametro_c = document.querySelector('#diametro_circulo');
+    diametro_c.innerHTML = "Diámetro: " + dc + " cm";
 }
 
 function calcularCircunferencia(){
-    const input6 = document.getElementById("radio");
-    const radio = parseInt(input6.value);
-    const cc = perimetroCirculo(radio);
-    alert(cc);
-    alert("HolaCircunferencia")
+    const input3 = document.getElementById("radio");
+    const radio = parseInt(input3.value);
+    const cc = perimetroCirculo(radio).toFixed(1);
+    const circunferencia_c = document.querySelector('#circunferencia_circulo');
+    circunferencia_c.innerHTML = "Circunferencia: " + cc + " cm";
 }
 
 function calcularAreaCirculo(){
-    const input6 = document.getElementById("radio");
-    const radio = parseInt(input6.value);
-    const ac = areaCirculo(radio);
-    alert(ac);
-    alert("HolaArea")
+    const input3 = document.getElementById("radio");
+    const radio = parseInt(input3.value);
+    const ac = areaCirculo(radio).toFixed(1);
+    const area_c = document.querySelector('#area_circulo');
+    area_c.innerHTML = "Área: " + ac + " cm<sup>2</sup>";
 }
+/*-------- BORRAR INPUTS */
+//------- id inputs de las figuras
+const input = document.getElementById("inputCuadrado");
+const input2= document.getElementById("ladosTriangulo");
+const input3 = document.getElementById("radio");
+
+// -------   id divs resultados de cuadrado
+const pc = document.querySelector('#perimetro_cuadrado');
+const ac = document.querySelector('#area_cuadrado');
+
+// -------   id divs resultados de triángulo
+const pt = document.querySelector('#perimetro_triangulo');
+const at = document.querySelector('#area_triangulo');
+
+// -------   id divs resultados de circulo
+const diametro_c = document.querySelector('#diametro_circulo');
+const circunferencia_c = document.querySelector('#circunferencia_circulo');
+const area_c = document.querySelector('#area_circulo');
+
+function clear_input_cuadrado(){
+    input.value = "";
+    pc.innerHTML = "Perímetro:";
+    ac.innerHTML = "Área: ";
+}
+
+function clear_input_triangulo(){
+    input2.value = "";
+    pt.innerHTML = "Perímetro:";
+    at.innerHTML = "Área:";
+}
+function clear_input_circulo(){
+    input3.value = "";
+    diametro_c.innerHTML = "Diámetro:";
+    circunferencia_c.innerHTML = "Circunferencia:";
+    area_c.innerHTML = "Área:";
+}
+ 
+input.addEventListener("click", clear_input_cuadrado);
+input2.addEventListener("click", clear_input_triangulo);
+input3.addEventListener("click", clear_input_circulo);
