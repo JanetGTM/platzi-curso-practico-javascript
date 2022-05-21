@@ -170,20 +170,17 @@ form .form-buttons button:hover{
 .results div{
     padding: 0 0 var(--padding-xs) var(--padding-xs);
     text-align: left;
-    line-height: 1.5rem;
+    line-height: 1.7rem;
 }
-
 footer{
     text-align: center;
     color:#747272;
     margin-top: var(--padding-g);
 }
-
 footer div{
     padding: var(--padding-m);
     border-top: 1px solid silver;
 }
-
 footer span{
     color: forestgreen;
 }
@@ -197,7 +194,6 @@ footer span{
     border-radius: var(--padding-xs);
     opacity: .5;
 }
-
 .fig-circ{
     border: 3px solid #ffffff;
     width: 60px;
@@ -208,7 +204,6 @@ footer span{
     border-radius: var(--padding-g);
     opacity: .5;
 }
-
 .fig-triang{
     border-top: 0px solid transparent; 
     border-bottom: 60px solid white; 
@@ -218,4 +213,39 @@ footer span{
     top: 15px;
     right: 10px;
     opacity: .3;
+}
+/*------ QUERYS ------*/
+@media (max-width: 1090px){
+    header{
+        margin-bottom: var(--padding-g);
+    }
+    main{
+       /* background-color: #006E7F; */
+       padding:0 var(--padding-g);
+    }
+    .container{
+        grid-template-columns:minmax(380px, 500px);
+        justify-content: center;
+        gap: var(--padding-g);
+    }
+}
+@media (max-width: 760px) {
+        header h1{
+            font-size: 1.5rem;
+        }
+        header p{
+            font-size: 1.1rem;
+            letter-spacing: 0;
+            width: auto;
+            padding: 0 var(--padding-m);
+        }
+        .title{
+            font-size: .8rem;
+        }
+        label{
+            font-size: 1.1rem;
+        }
+        .results h3{
+            font-size: 1.15rem;
+        }
 }
